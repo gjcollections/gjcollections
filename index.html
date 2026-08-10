@@ -209,7 +209,6 @@
       color: var(--text-muted);
     }
 
-    /* GRID FIX: Auto-fill prevents 1 single card from stretching full width */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 360px));
@@ -334,7 +333,7 @@
       }
 
       .nav-links {
-        display: none; /* Keeps top header uncluttered on mobile */
+        display: none;
       }
 
       .btn-whatsapp {
@@ -416,7 +415,6 @@
     </div>
 
     <div class="grid" id="jewelry-grid">
-      <!-- Static placeholders will be automatically replaced by items in data/jewelry.json -->
       <div class="card">
         <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=600&q=80" class="card-img" alt="Temple Set">
         <div class="card-body">
@@ -441,8 +439,8 @@
       </div>
       <div class="footer-col">
         <h4>Contact Us</h4>
-        <p>📞 Phone: +91 00000 00000</p>
-        <p>💬 WhatsApp: +91 00000 00000</p>
+        <p>📞 Phone: +91 63017 49850</p>
+        <p>💬 WhatsApp: +91 63017 49850</p>
         <p>📍 Location: [City / Shop Address Here]</p>
       </div>
       <div class="footer-col">
@@ -463,7 +461,8 @@
       if (!container) return;
 
       try {
-        const response = await fetch('/data/jewelry.json');
+        // Timestamp prevents browser from caching old JSON data
+        const response = await fetch('/data/jewelry.json?t=' + new Date().getTime());
         if (!response.ok) return;
 
         const data = await response.json();
