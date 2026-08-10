@@ -41,7 +41,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 1rem 6%;
-      background: rgba(10, 10, 10, 0.92);
+      background: rgba(10, 10, 10, 0.95);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border-gold);
       z-index: 1000;
@@ -50,23 +50,25 @@
     .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       text-decoration: none;
     }
 
     .brand img {
-      height: 48px;
-      width: 48px;
+      height: 44px;
+      width: 44px;
       border-radius: 50%;
       border: 1px solid var(--gold-primary);
       object-fit: cover;
+      flex-shrink: 0;
     }
 
     .brand-name {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       font-weight: 700;
       color: var(--gold-primary);
       letter-spacing: 1px;
+      white-space: nowrap;
     }
 
     .nav-links {
@@ -89,15 +91,17 @@
     .btn-whatsapp {
       background: #25d366;
       color: #ffffff;
-      padding: 0.6rem 1.2rem;
+      padding: 0.55rem 1.1rem;
       border-radius: 50px;
       text-decoration: none;
       font-weight: 600;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       transition: var(--transition);
       display: inline-flex;
       align-items: center;
       gap: 6px;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .btn-whatsapp:hover {
@@ -108,43 +112,43 @@
 
     /* HERO SECTION */
     .hero {
-      padding: 10rem 6% 5rem;
+      padding: 9rem 6% 4rem;
       text-align: center;
       background: radial-gradient(circle at center, rgba(212, 175, 55, 0.12) 0%, rgba(10, 10, 10, 1) 75%);
     }
 
     .hero-badge {
       display: inline-block;
-      padding: 0.4rem 1.2rem;
+      padding: 0.35rem 1rem;
       border: 1px solid var(--gold-primary);
       border-radius: 50px;
       color: var(--gold-primary);
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       text-transform: uppercase;
-      letter-spacing: 1.5px;
-      margin-bottom: 1.5rem;
+      letter-spacing: 1.2px;
+      margin-bottom: 1.2rem;
       background: rgba(212, 175, 55, 0.05);
     }
 
     .hero h1 {
-      font-size: 3.2rem;
+      font-size: 3rem;
       color: var(--gold-primary);
-      margin-bottom: 1rem;
+      margin-bottom: 0.8rem;
       letter-spacing: 1.5px;
       font-weight: 800;
     }
 
     .hero p {
       color: var(--text-muted);
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       max-width: 680px;
-      margin: 0 auto 2.5rem;
+      margin: 0 auto 2rem;
     }
 
     .btn-gold {
       background: var(--gold-primary);
       color: #000000;
-      padding: 0.8rem 2rem;
+      padding: 0.75rem 1.8rem;
       border-radius: 50px;
       text-decoration: none;
       font-weight: 700;
@@ -165,19 +169,19 @@
       background: linear-gradient(135deg, #1c1a14 0%, #141414 100%);
       border: 1px solid var(--border-gold);
       border-radius: var(--radius);
-      padding: 2.5rem;
+      padding: 2.2rem;
       margin: 2rem 6%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 2rem;
+      gap: 1.8rem;
       flex-wrap: wrap;
     }
 
     .repair-info h2 {
       color: var(--gold-primary);
-      font-size: 1.8rem;
-      margin-bottom: 0.5rem;
+      font-size: 1.7rem;
+      margin-bottom: 0.4rem;
     }
 
     .repair-info p {
@@ -187,28 +191,30 @@
 
     /* COLLECTIONS GRID */
     .collections {
-      padding: 4rem 6%;
+      padding: 3.5rem 6%;
     }
 
     .section-title {
       text-align: center;
-      margin-bottom: 3.5rem;
+      margin-bottom: 3rem;
     }
 
     .section-title h2 {
-      font-size: 2.4rem;
+      font-size: 2.2rem;
       color: var(--gold-primary);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
     }
 
     .section-title p {
       color: var(--text-muted);
     }
 
+    /* GRID FIX: Auto-fill prevents 1 single card from stretching full width */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2.2rem;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 360px));
+      justify-content: center;
+      gap: 2rem;
     }
 
     .card {
@@ -219,22 +225,24 @@
       transition: var(--transition);
       display: flex;
       flex-direction: column;
+      width: 100%;
     }
 
     .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 30px rgba(212, 175, 55, 0.18);
+      transform: translateY(-6px);
+      box-shadow: 0 10px 25px rgba(212, 175, 55, 0.18);
     }
 
     .card-img {
       width: 100%;
-      height: 270px;
+      height: 280px;
       object-fit: cover;
+      object-position: center;
       background: #1f1f1f;
     }
 
     .card-body {
-      padding: 1.5rem;
+      padding: 1.3rem;
       display: flex;
       flex-direction: column;
       flex-grow: 1;
@@ -249,14 +257,14 @@
     }
 
     .card-title {
-      font-size: 1.25rem;
-      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+      margin-bottom: 0.4rem;
     }
 
     .card-desc {
       color: var(--text-muted);
-      font-size: 0.9rem;
-      margin-bottom: 1.4rem;
+      font-size: 0.88rem;
+      margin-bottom: 1.2rem;
       flex-grow: 1;
     }
 
@@ -265,11 +273,11 @@
       justify-content: space-between;
       align-items: center;
       border-top: 1px solid rgba(255, 255, 255, 0.05);
-      padding-top: 1rem;
+      padding-top: 0.9rem;
     }
 
     .price-tag {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 600;
       color: var(--gold-primary);
     }
@@ -278,41 +286,88 @@
     footer {
       background: #050505;
       border-top: 1px solid var(--border-gold);
-      padding: 3.5rem 6% 1.5rem;
-      margin-top: 5rem;
+      padding: 3rem 6% 1.5rem;
+      margin-top: 4rem;
     }
 
     .footer-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 2.5rem;
-      margin-bottom: 2.5rem;
+      gap: 2rem;
+      margin-bottom: 2rem;
     }
 
     .footer-col h4 {
       color: var(--gold-primary);
-      margin-bottom: 1.2rem;
-      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
     }
 
     .footer-col p {
       color: var(--text-muted);
-      font-size: 0.9rem;
-      margin-bottom: 0.6rem;
+      font-size: 0.88rem;
+      margin-bottom: 0.5rem;
     }
 
     .copyright {
       text-align: center;
       color: var(--text-muted);
-      font-size: 0.85rem;
-      padding-top: 1.5rem;
+      font-size: 0.82rem;
+      padding-top: 1.2rem;
       border-top: 1px solid rgba(255, 255, 255, 0.05);
     }
 
+    /* MOBILE RESPONSIVE OPTIMIZATIONS */
     @media (max-width: 768px) {
-      .hero h1 { font-size: 2.2rem; }
-      .nav-links { display: none; }
-      .repair-banner { flex-direction: column; text-align: center; }
+      .navbar {
+        padding: 0.75rem 4%;
+      }
+
+      .brand img {
+        height: 36px;
+        width: 36px;
+      }
+
+      .brand-name {
+        font-size: 1.05rem;
+        letter-spacing: 0.5px;
+      }
+
+      .nav-links {
+        display: none; /* Keeps top header uncluttered on mobile */
+      }
+
+      .btn-whatsapp {
+        padding: 0.45rem 0.85rem;
+        font-size: 0.78rem;
+      }
+
+      .hero {
+        padding: 7.5rem 4% 3rem;
+      }
+
+      .hero h1 {
+        font-size: 2.1rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .repair-banner {
+        padding: 1.5rem;
+        margin: 1.5rem 4%;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .collections {
+        padding: 2.5rem 4%;
+      }
+
+      .grid {
+        grid-template-columns: repeat(auto-fill, minmax(260px, 100%));
+      }
     }
   </style>
 </head>
@@ -361,7 +416,7 @@
     </div>
 
     <div class="grid" id="jewelry-grid">
-      <!-- Item 1: Temple Jewellery -->
+      <!-- Static placeholders will be automatically replaced by items in data/jewelry.json -->
       <div class="card">
         <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=600&q=80" class="card-img" alt="Temple Set">
         <div class="card-body">
@@ -371,34 +426,6 @@
           <div class="card-footer">
             <span class="price-tag">Price on Request</span>
             <a href="https://wa.me/910000000000?text=Inquiry%20for%20Traditional%20Temple%20Necklace" class="btn-whatsapp" target="_blank">Inquire</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Item 2: Wedding Collection -->
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=600&q=80" class="card-img" alt="Wedding Set">
-        <div class="card-body">
-          <span class="card-category">Wedding Collection</span>
-          <h3 class="card-title">Royal Bridal Kundan Choker</h3>
-          <p class="card-desc">Handcrafted Kundan bridal choker set featuring pearl drops and matching earrings.</p>
-          <div class="card-footer">
-            <span class="price-tag">Price on Request</span>
-            <a href="https://wa.me/910000000000?text=Inquiry%20for%20Royal%20Bridal%20Kundan%20Choker" class="btn-whatsapp" target="_blank">Inquire</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Item 3: Daily Wear -->
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-161159147511e-33009361003f?auto=format&fit=crop&w=600&q=80" class="card-img" alt="Daily Wear">
-        <div class="card-body">
-          <span class="card-category">Daily Wear</span>
-          <h3 class="card-title">Minimalist Gold-Finish Bangles</h3>
-          <p class="card-desc">Lightweight, durable bangles crafted for comfortable everyday elegance.</p>
-          <div class="card-footer">
-            <span class="price-tag">Price on Request</span>
-            <a href="https://wa.me/910000000000?text=Inquiry%20for%20Minimalist%20Gold%20Bangles" class="btn-whatsapp" target="_blank">Inquire</a>
           </div>
         </div>
       </div>
@@ -442,7 +469,6 @@
         const data = await response.json();
         const items = data.items || [];
 
-        // Clear static placeholder cards if CMS items exist
         if (items.length > 0) {
           container.innerHTML = '';
         }
