@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/jpeg" href="https://i.postimg.cc/sxW0kSCv/image.png" />
+  <title>GJ Collections | Temple, Bridal & Custom Jewellery</title>
+  <style>
+    :root {
+      --bg-dark: #0a0a0a;
+      --bg-card: #141414;
+      --gold-primary: #d4af37;
+      --gold-hover: #f3e5ab;
+      --text-light: #f5f5f5;
+      --text-muted: #a0a0a0;
+      --border-gold: rgba(212, 175, 55, 0.25);
+      --radius: 12px;
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 6%;
+      background: rgba(10, 10, 10, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-gold);
+      z-index: 1000;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .brand img {
+      height: 48px;
+      width: 48px;
+      border-radius: 50%;
+      border: 1px solid var(--gold-primary);
+      object-fit: cover;
+    }
+
+    .brand-name {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--gold-primary);
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--gold-primary);
+    }
+
+    .btn-whatsapp {
+      background: #25d366;
+      color: #ffffff;
+      padding: 0.6rem 1.2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-whatsapp:hover {
+      background: #1eb855;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    }
+
+    /* HERO SECTION */
+    .hero {
+      padding: 10rem 6% 5rem;
+      text-align: center;
+      background: radial-gradient(circle at center, rgba(212, 175, 55, 0.12) 0%, rgba(10, 10, 10, 1) 75%);
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 0.4rem 1.2rem;
+      border: 1px solid var(--gold-primary);
+      border-radius: 50px;
+      color: var(--gold-primary);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 1.5rem;
+      background: rgba(212, 175, 55, 0.05);
+    }
+
+    .hero h1 {
+      font-size: 3.2rem;
+      color: var(--gold-primary);
+      margin-bottom: 1rem;
+      letter-spacing: 1.5px;
+      font-weight: 800;
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      font-size: 1.15rem;
+      max-width: 680px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .btn-gold {
+      background: var(--gold-primary);
+      color: #000000;
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .btn-gold:hover {
+      background: var(--gold-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+    }
+
+    /* REPAIR BANNER */
+    .repair-banner {
+      background: linear-gradient(135deg, #1c1a14 0%, #141414 100%);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      margin: 2rem 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .repair-info h2 {
+      color: var(--gold-primary);
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .repair-info p {
+      color: var(--text-muted);
+      max-width: 620px;
+    }
+
+    /* COLLECTIONS GRID */
+    .collections {
+      padding: 4rem 6%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-title h2 {
+      font-size: 2.4rem;
+      color: var(--gold-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title p {
+      color: var(--text-muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.2rem;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(212, 175, 55, 0.18);
+    }
+
+    .card-img {
+      width: 100%;
+      height: 270px;
+      object-fit: cover;
+      background: #1f1f1f;
+    }
+
+    .card-body {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card-category {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      color: var(--gold-primary);
+      letter-spacing: 1px;
+      margin-bottom: 0.4rem;
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-desc {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 1.4rem;
+      flex-grow: 1;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 1rem;
+    }
+
+    .price-tag {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--gold-primary);
+    }
+
+    /* FOOTER */
+    footer {
+      background: #050505;
+      border-top: 1px solid var(--border-gold);
+      padding: 3.5rem 6% 1.5rem;
+      margin-top: 5rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-col h4 {
+      color: var(--gold-primary);
+      margin-bottom: 1.2rem;
+      font-size: 1.1rem;
+    }
+
+    .footer-col p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .copyright {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.2rem; }
+      .nav-links { display: none; }
+      .repair-banner { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="#" class="brand">
+      <img src="https://i.postimg.cc/sxW0kSCv/image.png" alt="GJ Collections Logo" />
+      <span class="brand-name">GJ COLLECTIONS</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#collections">Collections</a></li>
+      <li><a href="#repairs">Jewellery Repair</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <!-- REPLACE '910000000000' WITH YOUR MOM'S WHATSAPP NUMBER BELOW -->
+    <a href="https://wa.me/910000000000?text=Hello%20GJ%20Collections,%20I%20have%20an%20inquiry." class="btn-whatsapp" target="_blank">
+      💬 WhatsApp Us
+    </a>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <span class="hero-badge">Handcrafted & Custom Designs</span>
+    <h1>GJ COLLECTIONS</h1>
+    <p>Timeless Elegance & Premium Quality Jewellery for Every Celebration.</p>
+    <a href="#collections" class="btn-gold">Explore Collection</a>
+  </section>
+
+  <!-- JEWELLERY REPAIR BANNER -->
+  <section class="repair-banner" id="repairs">
+    <div class="repair-info">
+      <h2>Expert Jewellery Repair & Restorations</h2>
+      <p>Professional polishing, size adjustments, stone resetting, and custom alterations to make your precious ornaments look brand new.</p>
+    </div>
+    <!-- REPLACE '910000000000' WITH YOUR MOM'S WHATSAPP NUMBER BELOW -->
+    <a href="https://wa.me/910000000000?text=Hello,%20I%20want%20to%20inquire%20about%20jewellery%20repair%20services." class="btn-gold" target="_blank">
+      Request Repair Quote
+    </a>
+  </section>
+
+  <!-- COLLECTIONS SECTION -->
+  <section class="collections" id="collections">
+    <div class="section-title">
+      <h2>Featured Collections</h2>
+      <p>Temple, Bridal, Fancy, Daily Wear & Fine Imitation Jewellery</p>
+    </div>
+
+    <div class="grid" id="jewelry-grid">
+      <!-- Item 1: Temple Jewellery -->
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=600&q=80" class="card-img" alt="Temple Set">
+        <div class="card-body">
+          <span class="card-category">Temple Jewellery</span>
+          <h3 class="card-title">Traditional Temple Necklace</h3>
+          <p class="card-desc">Intricate antique finish gold-plated temple necklace set with traditional craftsmanship.</p>
+          <div class="card-footer">
+            <span class="price-tag">Price on Request</span>
+            <a href="https://wa.me/910000000000?text=Inquiry%20for%20Traditional%20Temple%20Necklace" class="btn-whatsapp" target="_blank">Inquire</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 2: Wedding Collection -->
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=600&q=80" class="card-img" alt="Wedding Set">
+        <div class="card-body">
+          <span class="card-category">Wedding Collection</span>
+          <h3 class="card-title">Royal Bridal Kundan Choker</h3>
+          <p class="card-desc">Handcrafted Kundan bridal choker set featuring pearl drops and matching earrings.</p>
+          <div class="card-footer">
+            <span class="price-tag">Price on Request</span>
+            <a href="https://wa.me/910000000000?text=Inquiry%20for%20Royal%20Bridal%20Kundan%20Choker" class="btn-whatsapp" target="_blank">Inquire</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 3: Daily Wear -->
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-161159147511e-33009361003f?auto=format&fit=crop&w=600&q=80" class="card-img" alt="Daily Wear">
+        <div class="card-body">
+          <span class="card-category">Daily Wear</span>
+          <h3 class="card-title">Minimalist Gold-Finish Bangles</h3>
+          <p class="card-desc">Lightweight, durable bangles crafted for comfortable everyday elegance.</p>
+          <div class="card-footer">
+            <span class="price-tag">Price on Request</span>
+            <a href="https://wa.me/910000000000?text=Inquiry%20for%20Minimalist%20Gold%20Bangles" class="btn-whatsapp" target="_blank">Inquire</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contact">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>GJ COLLECTIONS</h4>
+        <p>Your one-stop destination for temple, bridal, fancy, daily wear, and expert jewellery restoration services.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <!-- EDIT CONTACT DETAILS BELOW -->
+        <p>📞 Phone: +91 00000 00000</p>
+        <p>💬 WhatsApp: +91 00000 00000</p>
+        <p>📍 Location: [City / Shop Address Here]</p>
+      </div>
+      <div class="footer-col">
+        <h4>Store Hours</h4>
+        <p>Monday - Saturday: 10:00 AM - 8:30 PM</p>
+        <p>Sunday: Closed / By Appointment</p>
+      </div>
+    </div>
+    <div class="copyright">
+      &copy; 2026 GJ Collections. All Rights Reserved.
+    </div>
+  </footer>
+
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</body>
+</html>

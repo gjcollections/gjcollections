@@ -1,0 +1,24 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "jewelry"
+    label: "Jewellery Items"
+    folder: "content/jewelry"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Item Name", name: "title", widget: "string" }
+      - { 
+          label: "Category", 
+          name: "category", 
+          widget: "select", 
+          options: ["Temple Jewellery", "Wedding Collection", "Fancy Collection", "Daily Wear", "Imitation Jewellery"] 
+        }
+      - { label: "Jewellery Photo", name: "image", widget: "image" }
+      - { label: "Short Description", name: "description", widget: "text" }
+      - { label: "Price / Tag", name: "price", widget: "string", default: "Price on Request" }
