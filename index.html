@@ -461,8 +461,8 @@
       if (!container) return;
 
       try {
-        // Timestamp prevents browser from caching old JSON data
-        const response = await fetch('/data/jewelry.json?t=' + new Date().getTime());
+        // Relative path without leading slash so it works on GitHub Pages
+        const response = await fetch('data/jewelry.json?t=' + new Date().getTime());
         if (!response.ok) return;
 
         const data = await response.json();
