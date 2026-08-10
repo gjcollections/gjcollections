@@ -10,6 +10,8 @@ collections:
     label: "Jewellery Items"
     folder: "content/jewelry"
     create: true
+    extension: "json"
+    format: "json"
     slug: "{{slug}}"
     fields:
       - { label: "Item Name", name: "title", widget: "string" }
