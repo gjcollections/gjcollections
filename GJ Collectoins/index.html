@@ -436,32 +436,29 @@
       if (!container) return;
 
       try {
-        const response = await fetch('https://api.github.com/repos/GJ-Collections/GJ-Collections/contents/content/jewelry');
+        // Fetch directly from Netlify static hosting - 0 GitHub API calls
+        const response = await fetch('/data/jewelry.json');
         if (!response.ok) return;
 
-        const files = await response.json();
+        const data = await response.json();
+        const items = data.items || [];
 
-        for (const file of files) {
-          if (file.name.endsWith('.json')) {
-            const itemRes = await fetch(file.download_url);
-            const itemData = await itemRes.json();
-
-            const card = document.createElement('div');
-            card.className = 'card';
-            card.innerHTML = `
-              <img src="${itemData.image}" class="card-img" alt="${itemData.title}">
-              <div class="card-body">
-                <span class="card-category">${itemData.category || 'Jewellery'}</span>
-                <h3 class="card-title">${itemData.title}</h3>
-                <p class="card-desc">${itemData.description || ''}</p>
-                <div class="card-footer">
-                  <span class="price-tag">Price on Request</span>
-                  <a href="https://wa.me/910000000000?text=Inquiry%20for%20${encodeURIComponent(itemData.title)}" class="btn-whatsapp" target="_blank">Inquire</a>
-                </div>
+        for (const item of items) {
+          const card = document.createElement('div');
+          card.className = 'card';
+          card.innerHTML = `
+            <img src="${item.image}" class="card-img" alt="${item.title}">
+            <div class="card-body">
+              <span class="card-category">${item.category || 'Jewellery'}</span>
+              <h3 class="card-title">${item.title}</h3>
+              <p class="card-desc">${item.description || ''}</p>
+              <div class="card-footer">
+                <span class="price-tag">Price on Request</span>
+                <a href="https://wa.me/910000000000?text=Inquiry%20for%20${encodeURIComponent(item.title)}" class="btn-whatsapp" target="_blank">Inquire</a>
               </div>
-            `;
-            container.appendChild(card);
-          }
+            </div>
+          `;
+          container.appendChild(card);
         }
       } catch (error) {
         console.error('Error loading items:', error);
