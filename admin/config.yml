@@ -18,6 +18,12 @@ collections:
             widget: "list"
             fields:
               - { label: "Item Name", name: "title", widget: "string" }
-              - { label: "Category", name: "category", widget: "select", options: ["Fancy Collection", "Bridal Collection", "Temple Jewellery", "Daily Wear"] }
+              - { 
+                  label: "Category", 
+                  name: "category", 
+                  widget: "select", 
+                  options: ["Rings", "Necklaces", "Bangles & Bracelets", "Earrings", "Pendants", "Temple Jewellery", "Bridal Collection", "Daily Wear", "Fancy Collection"],
+                  create: true 
+                }
               - { label: "Jewellery Photo", name: "image", widget: "image" }
-              - { label: "Short Description", name: "description", widget: "text" }
+              - { label: "Short Description", name: "description", widget: "text", required: false }
