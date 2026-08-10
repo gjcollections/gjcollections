@@ -436,25 +436,29 @@
       if (!container) return;
 
       try {
-        // Fetch directly from Netlify static hosting - 0 GitHub API calls
         const response = await fetch('/data/jewelry.json');
         if (!response.ok) return;
 
         const data = await response.json();
         const items = data.items || [];
 
+        // Clear static placeholder cards if CMS items exist
+        if (items.length > 0) {
+          container.innerHTML = '';
+        }
+
         for (const item of items) {
           const card = document.createElement('div');
           card.className = 'card';
           card.innerHTML = `
-            <img src="${item.image}" class="card-img" alt="${item.title}">
+            <img src="${item.image}" class="card-img" alt="${item.title || 'Jewellery Item'}">
             <div class="card-body">
               <span class="card-category">${item.category || 'Jewellery'}</span>
-              <h3 class="card-title">${item.title}</h3>
+              <h3 class="card-title">${item.title || ''}</h3>
               <p class="card-desc">${item.description || ''}</p>
               <div class="card-footer">
                 <span class="price-tag">Price on Request</span>
-                <a href="https://wa.me/910000000000?text=Inquiry%20for%20${encodeURIComponent(item.title)}" class="btn-whatsapp" target="_blank">Inquire</a>
+                <a href="https://wa.me/910000000000?text=Inquiry%20for%20${encodeURIComponent(item.title || 'Jewellery Item')}" class="btn-whatsapp" target="_blank">Inquire</a>
               </div>
             </div>
           `;
