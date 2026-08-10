@@ -329,7 +329,6 @@
       <li><a href="#repairs">Jewellery Repair</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <!-- REPLACE '910000000000' WITH YOUR MOM'S WHATSAPP NUMBER BELOW -->
     <a href="https://wa.me/910000000000?text=Hello%20GJ%20Collections,%20I%20have%20an%20inquiry." class="btn-whatsapp" target="_blank">
       💬 WhatsApp Us
     </a>
@@ -349,7 +348,6 @@
       <h2>Expert Jewellery Repair & Restorations</h2>
       <p>Professional polishing, size adjustments, stone resetting, and custom alterations to make your precious ornaments look brand new.</p>
     </div>
-    <!-- REPLACE '910000000000' WITH YOUR MOM'S WHATSAPP NUMBER BELOW -->
     <a href="https://wa.me/910000000000?text=Hello,%20I%20want%20to%20inquire%20about%20jewellery%20repair%20services." class="btn-gold" target="_blank">
       Request Repair Quote
     </a>
@@ -416,7 +414,6 @@
       </div>
       <div class="footer-col">
         <h4>Contact Us</h4>
-        <!-- EDIT CONTACT DETAILS BELOW -->
         <p>📞 Phone: +91 00000 00000</p>
         <p>💬 WhatsApp: +91 00000 00000</p>
         <p>📍 Location: [City / Shop Address Here]</p>
@@ -434,38 +431,44 @@
 
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <script>
-  async function loadJewelryItems() {
-    const container = document.getElementById('jewelry-container');
-    if (!container) return;
+    async function loadJewelryItems() {
+      const container = document.getElementById('jewelry-grid');
+      if (!container) return;
 
-    try {
-      const response = await fetch('https://api.github.com/repos/GJ-Collections/GJ-Collections/contents/content/jewelry');
-      const files = await response.json();
+      try {
+        const response = await fetch('https://api.github.com/repos/GJ-Collections/GJ-Collections/contents/content/jewelry');
+        if (!response.ok) return;
 
-      container.innerHTML = ''; // Clear container
+        const files = await response.json();
 
-      for (const file of files) {
-        if (file.name.endsWith('.json')) {
-          const itemRes = await fetch(file.download_url);
-          const itemData = await itemRes.json();
+        for (const file of files) {
+          if (file.name.endsWith('.json')) {
+            const itemRes = await fetch(file.download_url);
+            const itemData = await itemRes.json();
 
-          const card = document.createElement('div');
-          card.className = 'jewelry-card';
-          card.innerHTML = `
-            <img src="${itemData.image}" alt="${itemData.title}" style="max-width:100%; height:auto;">
-            <h3>${itemData.title}</h3>
-            <p><strong>${itemData.category}</strong></p>
-            <p>${itemData.description || ''}</p>
-          `;
-          container.appendChild(card);
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.innerHTML = `
+              <img src="${itemData.image}" class="card-img" alt="${itemData.title}">
+              <div class="card-body">
+                <span class="card-category">${itemData.category || 'Jewellery'}</span>
+                <h3 class="card-title">${itemData.title}</h3>
+                <p class="card-desc">${itemData.description || ''}</p>
+                <div class="card-footer">
+                  <span class="price-tag">Price on Request</span>
+                  <a href="https://wa.me/910000000000?text=Inquiry%20for%20${encodeURIComponent(itemData.title)}" class="btn-whatsapp" target="_blank">Inquire</a>
+                </div>
+              </div>
+            `;
+            container.appendChild(card);
+          }
         }
+      } catch (error) {
+        console.error('Error loading items:', error);
       }
-    } catch (error) {
-      console.error('Error loading items:', error);
     }
-  }
 
-  document.addEventListener('DOMContentLoaded', loadJewelryItems);
-</script>
+    document.addEventListener('DOMContentLoaded', loadJewelryItems);
+  </script>
 </body>
 </html>
