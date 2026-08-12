@@ -269,16 +269,29 @@
 
     .card-footer {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
+      flex-direction: column;
+      gap: 0.6rem;
       border-top: 1px solid rgba(255, 255, 255, 0.05);
       padding-top: 0.9rem;
+    }
+
+    .card-footer-action {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     .price-tag {
       font-size: 0.88rem;
       font-weight: 600;
       color: var(--gold-primary);
+    }
+
+    .screenshot-note {
+      font-size: 0.73rem;
+      color: var(--text-muted);
+      text-align: right;
+      opacity: 0.85;
     }
 
     /* FOOTER */
@@ -422,8 +435,11 @@
           <h3 class="card-title">Traditional Temple Necklace</h3>
           <p class="card-desc">Intricate antique finish gold-plated temple necklace set with traditional craftsmanship.</p>
           <div class="card-footer">
-            <span class="price-tag">Price on Request</span>
-            <a href="https://wa.me/916301749850?text=Inquiry%20for%20Traditional%20Temple%20Necklace" class="btn-whatsapp" target="_blank">Inquire (Please send a screenshot)</a>
+            <div class="card-footer-action">
+              <span class="price-tag">Price on Request</span>
+              <a href="https://wa.me/916301749850?text=Hello%20GJ%20Collections,%20I%20am%20inquiring%20about%20the%20Traditional%20Temple%20Necklace" class="btn-whatsapp" target="_blank">Inquire 💬</a>
+            </div>
+            <span class="screenshot-note">📸 Tip: Take a screenshot to share on WhatsApp</span>
           </div>
         </div>
       </div>
@@ -460,7 +476,7 @@
       if (!container) return;
 
       try {
-        // Relative path without leading slash so it works on GitHub Pages
+        // Fetch relative path so GitHub Pages loads data directly
         const response = await fetch('data/jewelry.json?t=' + new Date().getTime());
         if (!response.ok) return;
 
@@ -472,17 +488,26 @@
         }
 
         for (const item of items) {
+          const itemTitle = item.title || 'Jewellery Item';
+          // Pre-fills WhatsApp message with the exact item title and screenshot reminder
+          const waMessage = encodeURIComponent(`Hello GJ Collections, I am inquiring about "${itemTitle}". I will attach a screenshot below.`);
+
           const card = document.createElement('div');
           card.className = 'card';
           card.innerHTML = `
-            <img src="${item.image}" class="card-img" alt="${item.title || 'Jewellery Item'}">
+            <img src="${item.image}" class="card-img" alt="${itemTitle}">
             <div class="card-body">
               <span class="card-category">${item.category || 'Jewellery'}</span>
-              <h3 class="card-title">${item.title || ''}</h3>
+              <h3 class="card-title">${itemTitle}</h3>
               <p class="card-desc">${item.description || ''}</p>
               <div class="card-footer">
-                <span class="price-tag">Price on Request</span>
-                <a href="https://wa.me/916301749850?text=Inquiry%20for%20${encodeURIComponent(item.title || 'Jewellery Item')}" class="btn-whatsapp" target="_blank">Inquire</a>
+                <div class="card-footer-action">
+                  <span class="price-tag">Price on Request</span>
+                  <a href="https://wa.me/916301749850?text=${waMessage}" class="btn-whatsapp" target="_blank">
+                    Inquire 💬
+                  </a>
+                </div>
+                <span class="screenshot-note">📸 Tip: Take a screenshot to share on WhatsApp</span>
               </div>
             </div>
           `;
